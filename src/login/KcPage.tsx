@@ -4,6 +4,7 @@ import Template from "keycloakify/login/Template";
 import { Suspense, lazy } from "react";
 import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
+import Login from "./pages/Login";
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
 );
@@ -19,6 +20,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
         <Suspense>
             {(() => {
                 switch (kcContext.pageId) {
+                    case "login.ftl":
+                        return (
+                            <Login
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
                     default:
                         return (
                             <>
