@@ -14,7 +14,7 @@
         "storybook": "storybook dev -p 6006",
         "format": "prettier . --write",
         "page": "npx keycloakify eject-page",
-        "kc-dev": "npx keycloakify start-keycloak"
+        "kc-dev": "npx keycloakify start-keycloak --keycloak-version 25.0.2"
     },
     "license": "MIT",
     "keywords": [],

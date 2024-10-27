@@ -27,3 +27,4 @@ Watching for changes in .\
 ```
 
 -   now update the template `npx keycloakify eject-page # Select login -> Template.tsx`
+-   there is `src/login` this `login` is theme name inside that we have all the `pages` (this might be confusing)

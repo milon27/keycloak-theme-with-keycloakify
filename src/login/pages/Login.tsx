@@ -4,6 +4,7 @@ import type { PageProps } from "keycloakify/login/pages/PageProps";
 import { assert } from "keycloakify/tools/assert";
 import { clsx } from "keycloakify/tools/clsx";
 import { useEffect, useReducer, useState } from "react";
+import Button from "../../components/Button";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 
@@ -33,15 +34,26 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             headerNode={msg("loginAccountTitle")}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={
-                <div id="kc-registration-container">
-                    <div id="kc-registration">
-                        <span>
-                            {msg("noAccount")}{" "}
-                            <a tabIndex={8} href={url.registrationUrl}>
-                                {msg("doRegister")}
-                            </a>
-                        </span>
-                    </div>
+                // <div id="kc-registration-container">
+                //     <div id="kc-registration">
+                // <span>
+                //     {msg("noAccount")}{" "}
+                //     <a tabIndex={8} href={url.registrationUrl}>
+                //         {msg("doRegister")}
+                //     </a>
+                // </span>
+                //     </div>
+                // </div>
+                <div>
+                    <Button
+                        variant="link"
+                        title={
+                            <>
+                                {msg("noAccount")} {msg("doRegister")}
+                            </>
+                        }
+                        href={url.registrationUrl}
+                    />
                 </div>
             }
             socialProvidersNode={
@@ -51,8 +63,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     <>
                         {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
                             <div id="kc-social-providers" className={kcClsx("kcFormSocialAccountSectionClass")}>
-                                <hr />
-                                <h2>{msg("identity-provider-login-label")}</h2>
+                                {/* <h2>{msg("identity-provider-login-label")}</h2> */}
                                 <ul
                                     className={kcClsx(
                                         "kcFormSocialAccountListClass",
@@ -61,7 +72,19 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                 >
                                     {social.providers.map((...[p, , providers]) => (
                                         <li key={p.alias}>
-                                            <a
+                                            <Button
+                                                title={p.displayName}
+                                                href={p.loginUrl}
+                                                leftIcon={
+                                                    <>
+                                                        {p.iconClasses && (
+                                                            <i className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses)} aria-hidden="true"></i>
+                                                        )}
+                                                    </>
+                                                }
+                                            />
+
+                                            {/* <a
                                                 id={`social-${p.alias}`}
                                                 className={kcClsx(
                                                     "kcFormSocialAccountListButtonClass",
@@ -77,7 +100,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                                     className={clsx(kcClsx("kcFormSocialAccountNameClass"), p.iconClasses && "kc-social-icon-text")}
                                                     dangerouslySetInnerHTML={{ __html: kcSanitize(p.displayName) }}
                                                 ></span>
-                                            </a>
+                                            </a> */}
                                         </li>
                                     ))}
                                 </ul>
@@ -89,7 +112,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
         >
             {!showLoginForm ? (
                 <>
-                    <button onClick={() => setShowLoginForm(true)}>continue with email and password</button>
+                    <div className="h-4"></div>
+                    <Button variant="link" onClick={() => setShowLoginForm(true)} title="Log in via username and password" />
                 </>
             ) : (
                 <>
@@ -195,7 +219,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
                                     <div id="kc-form-buttons" className={kcClsx("kcFormGroupClass")}>
                                         <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
-                                        <input
+                                        {/* <input
                                             tabIndex={7}
                                             disabled={isLoginButtonDisabled}
                                             className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
@@ -203,9 +227,16 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             id="kc-login"
                                             type="submit"
                                             value={msgStr("doLogIn")}
+                                        /> */}
+                                        <Button
+                                            disabled={isLoginButtonDisabled}
+                                            type="submit"
+                                            variant="primary"
+                                            onClick={() => {}}
+                                            title={msgStr("doLogIn")}
                                         />
                                     </div>
-                                    <button onClick={() => setShowLoginForm(false)}>continue with social login</button>
+                                    <Button variant="link" onClick={() => setShowLoginForm(false)} title="Continue with social login" />
                                 </form>
                             )}
                         </div>
