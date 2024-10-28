@@ -19,13 +19,19 @@
     "license": "MIT",
     "keywords": [],
     "dependencies": {
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.1",
         "keycloakify": "^11.3.11",
+        "lucide-react": "^0.454.0",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "tailwind-merge": "^2.5.4",
+        "tailwindcss-animate": "^1.0.7"
     },
     "devDependencies": {
         "@storybook/react": "^8.1.10",
         "@storybook/react-vite": "^8.1.10",
+        "@types/node": "^22.8.1",
         "@types/react": "^18.2.43",
         "@types/react-dom": "^18.2.17",
         "@typescript-eslint/eslint-plugin": "^6.14.0",

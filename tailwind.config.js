@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: ["class"],
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
@@ -40,66 +41,22 @@ export default {
                 transparent: "transparent"
             },
             fontSize: {
-                h1: [
-                    "36px",
-                    {
-                        lineHeight: "44px",
-                        fontWeight: 700
-                    }
-                ],
-                h2: [
-                    "24px",
-                    {
-                        lineHeight: "32px",
-                        fontWeight: 700
-                    }
-                ],
-                h3: [
-                    "20px",
-                    {
-                        lineHeight: "28px",
-                        fontWeight: 600
-                    }
-                ],
-                h4: [
-                    "16px",
-                    {
-                        lineHeight: "24px",
-                        fontWeight: 500
-                    }
-                ],
-                body: [
-                    "14px",
-                    {
-                        lineHeight: "20px"
-                    }
-                ],
-                "body-paragraph": [
-                    "14px",
-                    {
-                        lineHeight: "24px"
-                    }
-                ],
-                small: [
-                    "12px",
-                    {
-                        lineHeight: "16px"
-                    }
-                ],
-                "small-paragraph": [
-                    "12px",
-                    {
-                        lineHeight: "20px"
-                    }
-                ],
-                "tiny-regular": [
-                    "10px",
-                    {
-                        lineHeight: "14px"
-                    }
-                ]
+                h1: ["36px", { lineHeight: "44px", fontWeight: 700 }],
+                h2: ["24px", { lineHeight: "32px", fontWeight: 700 }],
+                h3: ["20px", { lineHeight: "28px", fontWeight: 600 }],
+                h4: ["16px", { lineHeight: "24px", fontWeight: 500 }],
+                body: ["14px", { lineHeight: "20px" }],
+                "body-paragraph": ["14px", { lineHeight: "24px" }],
+                small: ["12px", { lineHeight: "16px" }],
+                "small-paragraph": ["12px", { lineHeight: "20px" }],
+                "tiny-regular": ["10px", { lineHeight: "14px" }]
+            },
+            borderRadius: {
+                lg: "var(--radius)",
+                md: "calc(var(--radius) - 2px)",
+                sm: "calc(var(--radius) - 4px)"
             }
         }
     },
-    plugins: []
+    plugins: [require("tailwindcss-animate")]
 };
