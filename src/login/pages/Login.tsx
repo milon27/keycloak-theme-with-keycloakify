@@ -73,7 +73,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     )}
                                 >
                                     {social.providers.map((...[p, , providers]) => (
-                                        <li key={p.alias}>
+                                        <li className="mb-2.5" key={p.alias}>
                                             <Button
                                                 title={p.displayName}
                                                 href={p.loginUrl}

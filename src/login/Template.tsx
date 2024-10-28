@@ -54,18 +54,23 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     }
 
     return (
-        <div className={kcClsx("kcLoginClass")}>
-            <div id="kc-header" className={kcClsx("kcHeaderClass") + "!mb-4"}>
-                {/* <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
+        // <div className={kcClsx("kcLoginClass")}>
+        <div className={kcClsx("kcLoginClass") + " min-h-screen grid place-content-center"}>
+            {/*<div id="kc-header" className={kcClsx("kcHeaderClass") + "!mb-4"}>
+                <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
                     {msg("loginTitleHtml", realm.displayNameHtml)}
-                </div> */}
+                </div> 
                 <div className="space-y-2">
-                    <h1 className="text-h1 text-center font-normal text-gray-900">Hi, welcome to Pyng!</h1>
-                    <p className="text-body text-center !text-gray-800">A simple way to pay with zero surcharges</p>
+                    <h1 className="text-lg md:text-h1 text-center font-bold md:font-semibold text-gray-900">Hi, welcome to Pyng!</h1>
+                    <p className="text-body text-center font-medium !text-gray-700">A simple way to pay with zero surcharges</p>
                 </div>
-            </div>
+            </div>*/}
             {/* <div className={kcClsx("kcFormCardClass")}> */}
-            <div className="max-w-96 mx-auto space-y-2">
+            <div className="max-w-96 col-span-1 px-4 md:p-0 mx-auto space-y-2">
+                <div className="space-y-2">
+                    <h1 className="text-lg md:text-h1 text-center font-bold md:font-semibold text-gray-900">Hi, welcome to Pyng!</h1>
+                    <p className="text-body text-center font-medium !text-gray-700">A simple way to pay with zero surcharges</p>
+                </div>
                 <header className={kcClsx("kcFormHeaderClass")}>
                     {enabledLanguages.length > 1 && (
                         <div className={kcClsx("kcLocaleMainClass") + " hidden"} id="kc-locale">
