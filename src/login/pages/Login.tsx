@@ -1,5 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { useToggleSocialEmailStore } from "@/hooks/toggle-social-email.hook";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
@@ -24,7 +25,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 
-    const [showLoginForm, setShowLoginForm] = useState(false);
+    // const [showLoginForm, setShowLoginForm] = useState(false);
+    const { set: setShowLoginForm, value: showLoginForm } = useToggleSocialEmailStore();
 
     return (
         <Template
