@@ -1,3 +1,5 @@
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
@@ -138,7 +140,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                                       ? msg("usernameOrEmail")
                                                       : msg("email")}
                                             </label>
-                                            <input
+                                            <Input
                                                 tabIndex={2}
                                                 id="username"
                                                 className={kcClsx("kcInputClass")}
@@ -167,7 +169,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             {msg("password")}
                                         </label>
                                         <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password">
-                                            <input
+                                            <Input
                                                 tabIndex={3}
                                                 id="password"
                                                 className={kcClsx("kcInputClass")}
@@ -192,15 +194,24 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
                                         <div id="kc-form-options">
                                             {realm.rememberMe && !usernameHidden && (
-                                                <div className="checkbox">
-                                                    <label>
-                                                        <input
-                                                            tabIndex={5}
-                                                            id="rememberMe"
-                                                            name="rememberMe"
-                                                            type="checkbox"
-                                                            defaultChecked={!!login.rememberMe}
-                                                        />{" "}
+                                                // <div className="checkbox">
+                                                //     <label>
+                                                //         <input
+                                                //             tabIndex={5}
+                                                //             id="rememberMe"
+                                                //             name="rememberMe"
+                                                //             type="checkbox"
+                                                //             defaultChecked={!!login.rememberMe}
+                                                //         />{" "}
+                                                //         {msg("rememberMe")}
+                                                //     </label>
+                                                //  </div>
+                                                <div className="flex items-center space-x-2">
+                                                    <Checkbox tabIndex={5} id="rememberMe" name="rememberMe" defaultChecked={!!login.rememberMe} />
+                                                    <label
+                                                        htmlFor="rememberMe"
+                                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 m-0"
+                                                    >
                                                         {msg("rememberMe")}
                                                     </label>
                                                 </div>
@@ -209,7 +220,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         <div className={kcClsx("kcFormOptionsWrapperClass")}>
                                             {realm.resetPasswordAllowed && (
                                                 <span>
-                                                    <a tabIndex={6} href={url.loginResetCredentialsUrl}>
+                                                    <a className="hover:text-primary-500" tabIndex={6} href={url.loginResetCredentialsUrl}>
                                                         {msg("doForgotPassword")}
                                                     </a>
                                                 </span>
@@ -236,6 +247,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             title={msgStr("doLogIn")}
                                         />
                                     </div>
+                                    <div className="h-3" />
                                     <Button variant="link" onClick={() => setShowLoginForm(false)} title="Continue with social login" />
                                 </form>
                             )}
