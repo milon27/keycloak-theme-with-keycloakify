@@ -27,4 +27,17 @@ Watching for changes in .\
 ```
 
 -   now update the template `npx keycloakify eject-page # Select login -> Template.tsx`
--   there is `src/login` this `login` is theme name inside that we have all the `pages` (this might be confusing)
+-   there is `src/login`, this `login` is theme name inside that we have all the `pages` (this might be confusing)
+
+so when we are done: run the docker file to build the image, and run the container
+
+-   `docker build -t docker-keycloak-with-theme -f ./Dockerfile .`
+-   ```
+    docker run \
+        -e KEYCLOAK_ADMIN=admin \
+        -e KEYCLOAK_ADMIN_PASSWORD=admin \
+        -p 8080:8080 \
+        docker-keycloak-with-theme
+    ```
+
+-   now you can view the admin panel in `localhost:8080`

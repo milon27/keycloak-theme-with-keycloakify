@@ -74,7 +74,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         social.providers.length > 3 && "kcFormSocialAccountListGridClass"
                                     )}
                                 >
-                                    {social.providers.map((...[p, , providers]) => (
+                                    {social.providers.map((...[p]) => (
                                         <li className="mb-2.5" key={p.alias}>
                                             <Button
                                                 title={p.displayName}
